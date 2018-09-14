@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2" xmlns:kml="http://www.opengis.net/kml/2.2" xmlns:atom="http://www.w3.org/2005/Atom">
+<Document>
+<name>5.kmz</name>
+<Placemark>
+<name>IMG_20180107_154200452.jpg</name>
+<description>
+<![CDATA[
+<img style="max-width:1000px;" src="IMG_20180107_154200452.jpg">
+]]>
+</description>
+<Point>
+<coordinates>-80.63481041666667,35.238415055555556</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>IMG_20180103_185114555.jpg</name>
+<description>
+<![CDATA[
+<img style="max-width:1000px;" src="IMG_20180103_185114555.jpg">
+]]>
+</description>
+<Point>
+<coordinates>-80.80697258333333,35.237042083333336</coordinates>
+</Point>
+</Placemark>
+</Document>
+</kml>
