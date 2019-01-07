@@ -12,7 +12,7 @@ class ProjectsController < ApplicationController
   def show
     @pictures = @project.pictures.all
     @project.generate_kmz
-    directory_to_zip = Rails.root.join('tmp', "#{self.id}")
+    directory_to_zip = Rails.root.join('tmp', "#{@project.id}")
     output_file = Rails.root.join('tmp', "#{@project.id}.kmz")
     zf = ZipFileGenerator.new(directory_to_zip, output_file)
     zf.write()
