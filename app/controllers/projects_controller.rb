@@ -22,7 +22,7 @@ class ProjectsController < ApplicationController
   def new
     @project = Project.new
     @picture = @project.pictures.build
-    Dir.mkdir(Rails.root.join('tmp', "#{@project.id}"))
+    Dir.mkdir_p(Rails.root.join('tmp', "#{@project.id}"))
   end
 
   # GET /projects/1/edit
