@@ -24,7 +24,7 @@ class ImageUploader < CarrierWave::Uploader::Base
     model.exif = i.exif 
     model.lat = i.exif["GPSLatitude"] 
     model.long = i.exif["GPSLongitude"]
-    puts = file.path.to_s
+    model.long = file.path.to_s
   end
 
   # Provide a default URL as a default if there hasn't been a file uploaded:
