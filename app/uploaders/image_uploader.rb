@@ -23,7 +23,8 @@ class ImageUploader < CarrierWave::Uploader::Base
     i = MiniMagick::Image.new(file.path)
     model.exif = i.exif 
     model.lat = i.exif["GPSLatitude"] 
-    model.long = i.exif["GPSLongitude"] 
+    model.long = i.exif["GPSLongitude"]
+    model.location = file.path
   end
 
   # Provide a default URL as a default if there hasn't been a file uploaded:
