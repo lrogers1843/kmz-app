@@ -16,7 +16,7 @@ class ProjectsController < ApplicationController
     output_file = Rails.root.join('var/tmp', "#{@project.id}.kmz")
     zf = ZipFileGenerator.new(directory_to_zip, output_file)
     zf.write()
-    file.send(output_file)
+    send_file(output_file)
   end
 
   # GET /projects/new
