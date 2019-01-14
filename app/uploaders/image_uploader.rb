@@ -14,7 +14,7 @@ class ImageUploader < CarrierWave::Uploader::Base
   # end
   # stores all pics in project folder
   def store_dir
-    Rails.root.join('tmp', "#{model.project_id.to_s}")
+    Rails.root.join('var/tmp', "#{model.project_id.to_s}")
   end
   
   process :store_exif_lat_long
