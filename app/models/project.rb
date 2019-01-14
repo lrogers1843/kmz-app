@@ -33,7 +33,7 @@ class Project < ApplicationRecord
         end
         content.push('</Document>')
         content.push('</kml>')
-        puts content
+        puts "start write function"
         File.open(filename, "w") { |f| f.puts(content) }
         
     end
