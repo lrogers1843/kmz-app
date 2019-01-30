@@ -12,8 +12,8 @@ class ProjectsController < ApplicationController
   def show
     @pictures = @project.pictures.all
     @project.generate_kmz
-    directory_to_zip = "/home/ec2-user/environment/gps_app_3/public/uploads/#{@project.id}"
-    output_file = "/home/ec2-user/environment/gps_app_3/public/kmz_directory/#{@project.id}.kmz"
+    directory_to_zip = Rails.root.join('public/uploads', "#{self.id}")
+    output_file = Rails.root.join('public/kmz_directory', "#{@project.id}.kmz")
     zf = ZipFileGenerator.new(directory_to_zip, output_file)
     zf.write()
   end
