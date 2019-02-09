@@ -3,7 +3,7 @@ class Project < ApplicationRecord
     has_many :pictures
     accepts_nested_attributes_for :pictures
     
-    def generate_kmz
+    def generate_kml
         filename = Rails.root.join('public/uploads', "#{self.id}" , "doc.kml")
         content = []
         content.push('<?xml version="1.0" encoding="UTF-8"?>')
@@ -33,7 +33,7 @@ class Project < ApplicationRecord
         end
         content.push('</Document>')
         content.push('</kml>')
-        File.open(filename, "w") { |f| f.puts(content) }
+        #File.open(filename, "w") { |f| f.puts(content) }
         
     end
    
