@@ -8,6 +8,7 @@ gem 'rubyzip'
 gem 'hirb'
 gem "mini_magick"
 gem 'carrierwave'
+gem 'fog'
 gem 'bootstrap-sass'
 gem 'jquery-rails'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
