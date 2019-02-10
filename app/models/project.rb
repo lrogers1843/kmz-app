@@ -33,8 +33,10 @@ class Project < ApplicationRecord
         end
         content.push('</Document>')
         content.push('</kml>')
-        File.open(filename, "w") { |f| f.puts(content) }
-        
+        #File.open(filename, "w") { |f| f.puts(content) }
+        s3 = Aws::S3::Resource.new
+        obj = s3.bucket(ENV['S3_BUCKET']).object('test')
+        obj.put(body: 'Hello World!')
     end
    
  
