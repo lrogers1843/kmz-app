@@ -36,9 +36,10 @@ class Project < ApplicationRecord
         
         s3 = Aws::S3::Resource.new
         obj = s3.bucket(ENV['S3_BUCKET']).object('test')
-        File.open(filename, "w") { |f| 
+        File.open("kmltest", "w") { |f| 
         f.puts(content)
-        obj.put(body: f)}
+        obj.put(body: f)
+        }
     end
    
  
