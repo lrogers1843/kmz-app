@@ -35,8 +35,8 @@ class Project < ApplicationRecord
         content.push('</kml>')
         
         s3 = Aws::S3::Resource.new
-        obj = s3.bucket(ENV['S3_BUCKET']).object(filename)
-        File.open("kmltest", "w+") { |f| 
+        obj = s3.bucket(ENV['S3_BUCKET'] + "#{self.id}" + "*").object(doc.kml)
+        File.open("kml_temp", "w+") { |f| 
         f.puts(content)
         obj.put(body: f)
         }
