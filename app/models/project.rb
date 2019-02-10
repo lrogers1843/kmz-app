@@ -14,10 +14,10 @@ class Project < ApplicationRecord
         pic_title = pic.image.to_s.split('/').last
         lat_parts = pic.lat.to_s.split(/[,\/]/)
         lat_parts = lat_parts.map {|x| x.to_f}
-        lat_decimal = (lat_parts[0] / lat_parts[1]) + (lat_parts[2] / lat_parts[3] / 60.0) + (lat_parts[4] / lat_parts[5] / 3600.0)
-        long_parts = pic.long.to_s.split(/[,\/]/)
-        long_parts = long_parts.map {|x| x.to_f}
-        long_decimal = (long_parts[0] / long_parts[1]) + (long_parts[2] / long_parts[3] / 60.0) + (long_parts[4] / long_parts[5] / 3600.0)
+        # lat_decimal = (lat_parts[0] / lat_parts[1]) + (lat_parts[2] / lat_parts[3] / 60.0) + (lat_parts[4] / lat_parts[5] / 3600.0)
+        # long_parts = pic.long.to_s.split(/[,\/]/)
+        # long_parts = long_parts.map {|x| x.to_f}
+        # long_decimal = (long_parts[0] / long_parts[1]) + (long_parts[2] / long_parts[3] / 60.0) + (long_parts[4] / long_parts[5] / 3600.0)
         content.push('<Placemark>')
         content.push("<name>#{pic_title}</name>")
         content.push('<description>')
