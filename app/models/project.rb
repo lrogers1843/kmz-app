@@ -34,12 +34,14 @@ class Project < ApplicationRecord
         content.push('</Document>')
         content.push('</kml>')
         
-        s3 = Aws::S3::Resource.new
-        obj = s3.bucket(ENV['S3_BUCKET']).object("uploads/" + "#{self.id}" + "/doc.kml")
-        File.open("kml_temp", "w+") { |f| 
-        f.puts(content)
-        obj.put(body: f)
-        }
+        File.open("/tmp/test.txt", "w") { |f| f.puts("testing") }
+        
+        # s3 = Aws::S3::Resource.new
+        # obj = s3.bucket(ENV['S3_BUCKET']).object("uploads/" + "#{self.id}" + "/doc.kml")
+        # File.open("kml_temp", "w+") { |f| 
+        # f.puts(content)
+        # obj.put(body: f)
+        # }
     end
    
  
