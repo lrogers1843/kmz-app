@@ -34,7 +34,7 @@ class Project < ApplicationRecord
         content.push('</Document>')
         content.push('</kml>')
         
-        File.open("/tmp/test.txt", "w") { |f| f.puts("testing") }
+        File.open("/tmp/testfile.txt", "w+") { |f| f.puts("testing") }
         
         # s3 = Aws::S3::Resource.new
         # obj = s3.bucket(ENV['S3_BUCKET']).object("uploads/" + "#{self.id}" + "/doc.kml")
