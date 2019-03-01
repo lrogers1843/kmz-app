@@ -42,7 +42,7 @@ class Project < ApplicationRecord
     
     def download_project
     s3 = Aws::S3::Resource.new
-    s3.bucket(ENV['S3_BUCKET']).objects.object_versions({ prefix:"uploads/#{self.id}" }).each do |object|
+    s3.bucket(ENV['S3_BUCKET']).object_versions({ prefix:"uploads/#{self.id}" }).each do |object|
         object.get(response_target: "tmp/" + "#{self.id}")
         end
     end
