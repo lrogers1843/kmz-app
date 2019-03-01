@@ -4,7 +4,6 @@ class Project < ApplicationRecord
     accepts_nested_attributes_for :pictures
     
     def generate_kml
-        #filename = Rails.root.join('uploads', "#{self.id}" , "doc.kml")
         content = []
         content.push('<?xml version="1.0" encoding="UTF-8"?>')
         content.push('<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2" xmlns:kml="http://www.opengis.net/kml/2.2" xmlns:atom="http://www.w3.org/2005/Atom">')
@@ -33,18 +32,23 @@ class Project < ApplicationRecord
         end
         content.push('</Document>')
         content.push('</kml>')
-        
-        File.open("/tmp/testfile.txt", "w+") { |f| f.puts("testing") }
-        
-        # s3 = Aws::S3::Resource.new
-        # obj = s3.bucket(ENV['S3_BUCKET']).object("uploads/" + "#{self.id}" + "/doc.kml")
-        # File.open("kml_temp", "w+") { |f| 
-        # f.puts(content)
-        # obj.put(body: f)
-        # }
+        s3 = Aws::S3::Resource.new
+        obj = s3.bucket(ENV['S3_BUCKET']).object("uploads/" + "#{self.id}" + "/doc.kml")
+        File.open("kml_temp", "w+") { |f| 
+        f.puts(content)
+        obj.put(body: f)
+        }
+    end
+    
+    def download_project
+    s3 = Aws::S3::Resource.new
+    s3.bucket(ENV['S3_BUCKET']).objects.with_prefix("uploads/" + "#{self.id}").each do |object|
+        object.get(response_target: "tmp/" + "#{self.id}")
+        end
     end
    
  
 end
 
-# style="max-width:500px;"
+# test output to /tmp folder - works
+# File.open("/tmp/testfile.txt", "w+") { |f| f.puts("testing") }
