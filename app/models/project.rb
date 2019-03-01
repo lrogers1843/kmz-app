@@ -44,7 +44,8 @@ class Project < ApplicationRecord
     #Dir.mkdir("/tmp/#{self.id}")    
     s3 = Aws::S3::Resource.new
     s3.bucket(ENV['S3_BUCKET']).object_versions({ prefix:"uploads/#{self.id}" }).each do |object|
-        object.get(response_target: "/tmp/#{object.key}")
+        #object.get(response_target: "/tmp/#{self.id}/#{object.key}")
+        object.get(response_target: "/tmp/test.jpg")
         end
     end
    
