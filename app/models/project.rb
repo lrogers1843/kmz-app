@@ -1,5 +1,5 @@
 class Project < ApplicationRecord
-    
+    require FileUtils
     has_many :pictures
     accepts_nested_attributes_for :pictures
     
@@ -41,14 +41,24 @@ class Project < ApplicationRecord
     end
     
     def download_project
-    #Dir.mkdir("/tmp/#{self.id}")    
+    #delete target directory if exists
+    if Dir.exist?("/tmp/#{self.id}") {
+        FileUtils.remove_dir("/tmp/#{self.id}")
+    }
+    
+    #create target dir
+    FileUtils.mkdir "/tmp/#{self.id}" 
+    
+    #download pics
     s3 = Aws::S3::Resource.new
     s3.bucket(ENV['S3_BUCKET']).object_versions({ prefix:"uploads/#{self.id}" }).each do |object|
-        #object.get(response_target: "/tmp/#{self.id}/#{object.key}")
-        #object.get(response_target: "/tmp/test.jpg")
         
-        end
-    File.chmod(0666, "/tmp/test.jpg")
+        #need to isolate file name
+        #full_key = object.key
+        
+        #object.get(response_target: "/tmp/#{self.id}/#{object.key}")
+    end
+    
     end
    
  
