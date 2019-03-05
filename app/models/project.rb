@@ -40,7 +40,7 @@ class Project < ApplicationRecord
     end
     
     def download_project
-    FileUtils.rm_r '/tmp'
+    #FileUtils.rm_r '/tmp'
     #delete target directory if exists
     if Dir.exist?("/tmp/#{self.id}") 
         FileUtils.remove_dir("/tmp/#{self.id}")
