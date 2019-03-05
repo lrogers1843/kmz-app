@@ -48,7 +48,7 @@ class Project < ApplicationRecord
         #object.get(response_target: "/tmp/test.jpg")
         
         end
-    File.chmod(0666, "/tmp/test.jpg")
+    File.chmod(0444, "/tmp/test.jpg")
     end
    
  
