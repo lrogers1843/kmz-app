@@ -41,9 +41,9 @@ class Project < ApplicationRecord
     
     def download_project
     #delete target directory if exists
-    if Dir.exist?("/tmp/#{self.id}") {
+    if Dir.exist?("/tmp/#{self.id}") 
         FileUtils.remove_dir("/tmp/#{self.id}")
-    }
+    end
     
     #create target dir
     FileUtils.mkdir "/tmp/#{self.id}" 
@@ -60,8 +60,6 @@ class Project < ApplicationRecord
     
     end
    
- 
-end
-
 # test output to /tmp folder - works
 # File.open("/tmp/testfile.txt", "w+") { |f| f.puts("testing") }
+end
