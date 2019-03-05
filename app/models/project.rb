@@ -45,7 +45,8 @@ class Project < ApplicationRecord
     s3 = Aws::S3::Resource.new
     s3.bucket(ENV['S3_BUCKET']).object_versions({ prefix:"uploads/#{self.id}" }).each do |object|
         #object.get(response_target: "/tmp/#{self.id}/#{object.key}")
-        object.get(response_target: "/tmp/test.jpg")
+        #object.get(response_target: "/tmp/test.jpg")
+        File.chmod(0666, "/tmp/test.jpg", "out")
         end
     end
    
