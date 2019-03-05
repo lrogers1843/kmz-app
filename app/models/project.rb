@@ -40,7 +40,9 @@ class Project < ApplicationRecord
     end
     
     def download_project
+    #tmp cleanup    
     #FileUtils.rm_r '/tmp'
+    
     #delete target directory if exists
     if Dir.exist?("/tmp/#{self.id}") 
         FileUtils.remove_dir("/tmp/#{self.id}")
@@ -56,7 +58,7 @@ class Project < ApplicationRecord
         #need to isolate file name
         #full_key = object.key
         
-        #object.get(response_target: "/tmp/#{self.id}/#{object.key}")
+        object.get(response_target: "/tmp/#{self.id}/#{object.key}")
     end
     
     end
