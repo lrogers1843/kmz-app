@@ -36,6 +36,7 @@ class ImageUploader < CarrierWave::Uploader::Base
     long_parts = long_raw.to_s.split(/[,\/]/)
     long_parts = long_parts.map {|x| x.to_f}
     long_decimal = (long_parts[0] / long_parts[1]) + (long_parts[2] / long_parts[3] / 60.0) + (long_parts[4] / long_parts[5] / 3600.0)
+    long_decimal = (long_decimal*1000000).round / 1000000.0
     
     model.exif = i.exif 
     model.lat = lat_decimal

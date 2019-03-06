@@ -35,31 +35,27 @@ class Project < ApplicationRecord
     end
     
     def download_project
-    #tmp cleanup    
-    #FileUtils.rm_r '/tmp'
-    
-    #delete target directory if exists
-    if Dir.exist?("/tmp/#{self.id}") 
-        FileUtils.remove_dir("/tmp/#{self.id}")
+        #tmp cleanup    
+        #FileUtils.rm_r '/tmp'
+        
+        #delete target directory if exists
+        if Dir.exist?("/tmp/#{self.id}") 
+            FileUtils.remove_dir("/tmp/#{self.id}")
+        end
+        
+        #create target dir
+        FileUtils.mkdir "/tmp/#{self.id}" 
+        
+        #download pics
+        s3 = Aws::S3::Resource.new
+        s3.bucket(ENV['S3_BUCKET']).object_versions({ prefix:"uploads/#{self.id}" }).each do |object|
+            #get file name
+            full_key = object.key
+            file_name = full_key.to_s.split('/').last
+            #save to /tmp
+            object.get(response_target: "/tmp/#{self.id}/#{file_name}")
+        end
+        
     end
     
-    #create target dir
-    FileUtils.mkdir "/tmp/#{self.id}" 
-    
-    #download pics
-    s3 = Aws::S3::Resource.new
-    s3.bucket(ENV['S3_BUCKET']).object_versions({ prefix:"uploads/#{self.id}" }).each do |object|
-        
-        #need to isolate file name
-        full_key = object.key
-        file_name = full_key.to_s.split('/').last
-        
-        
-        object.get(response_target: "/tmp/#{self.id}/#{file_name}")
-    end
-    
-    end
-   
-# test output to /tmp folder - works
-# File.open("/tmp/testfile.txt", "w+") { |f| f.puts("testing") }
 end
