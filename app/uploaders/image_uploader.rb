@@ -30,7 +30,7 @@ class ImageUploader < CarrierWave::Uploader::Base
     lat_parts = lat_raw.to_s.split(/[,\/]/)
     lat_parts = lat_parts.map {|x| x.to_f}
     lat_decimal = (lat_parts[0] / lat_parts[1]) + (lat_parts[2] / lat_parts[3] / 60.0) + (lat_parts[4] / lat_parts[5] / 3600.0)
-    lat_decimal = (lat_decimal*1000000).round / 1000000
+    lat_decimal = (lat_decimal*1000000000).round / 1000000000
     
     long_raw = i.exif["GPSLongitude"] 
     long_parts = long_raw.to_s.split(/[,\/]/)
