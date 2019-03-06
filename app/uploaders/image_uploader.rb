@@ -25,11 +25,22 @@ class ImageUploader < CarrierWave::Uploader::Base
   
   def store_exif_lat_long 
     i = MiniMagick::Image.new(file.path)
+    
+    lat_raw = i.exif["GPSLatitude"]
+    lat_parts = lat_raw.to_s.split(/[,\/]/)
+    lat_parts = lat_parts.map {|x| x.to_f}
+    lat_decimal = (lat_parts[0] / lat_parts[1]) + (lat_parts[2] / lat_parts[3] / 60.0) + (lat_parts[4] / lat_parts[5] / 3600.0)
+    
+    long_raw = i.exif["GPSLongitude"] 
+    long_parts = long_raw.to_s.split(/[,\/]/)
+    long_parts = long_parts.map {|x| x.to_f}
+    long_decimal = (long_parts[0] / long_parts[1]) + (long_parts[2] / long_parts[3] / 60.0) + (long_parts[4] / long_parts[5] / 3600.0)
+    
     model.exif = i.exif 
-    model.lat = i.exif["GPSLatitude"] 
-    model.long = i.exif["GPSLongitude"] 
+    model.lat = lat_decimal
+    model.long = long_decimal
   end
-
+  
   # Provide a default URL as a default if there hasn't been a file uploaded:
   # def default_url(*args)
   #   # For Rails 3.1+ asset pipeline compatibility:
