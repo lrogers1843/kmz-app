@@ -56,9 +56,11 @@ class Project < ApplicationRecord
     s3.bucket(ENV['S3_BUCKET']).object_versions({ prefix:"uploads/#{self.id}" }).each do |object|
         
         #need to isolate file name
-        #full_key = object.key
+        full_key = object.key
+        file_name = full_key.to_s.split('/').last
         
-        object.get(response_target: "/tmp/#{self.id}/#{object.key}")
+        
+        object.get(response_target: "/tmp/#{self.id}/#{file_name}")
     end
     
     end
