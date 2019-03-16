@@ -8,7 +8,7 @@ class Project < ApplicationRecord
         content.push('<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2" xmlns:kml="http://www.opengis.net/kml/2.2" xmlns:atom="http://www.w3.org/2005/Atom">')
         content.push('<Document>')
         content.push("<name>#{self.id}.kmz</name>")
-        #cycles through each picture in db for the project at hand
+        #cycles through each picture in db for the current project
         self.pictures.each do |pic|
             pic_title = pic.image.to_s.split('/').last
             content.push('<Placemark>')
@@ -24,6 +24,7 @@ class Project < ApplicationRecord
             content.push('</Point>')
             content.push('</Placemark>')
         end
+        #pushes upload to S3 folder
         content.push('</Document>')
         content.push('</kml>')
         s3 = Aws::S3::Resource.new
