@@ -16,6 +16,6 @@
 </div>
 
 <%= link_to 'Edit', edit_project_path(@project) %> 
-<a href=  "/tmp/<%=#{@project.id}%>/doc.kml"  download>Download KML</a>
+<a href= <%= "/tmp/#{@project.id}/doc.kml" %> download>Download KML</a>
 <a href= <%= "/kmz_directory/#{@project.id}.kmz" %> download>Download KMZ</a>
 <%= link_to 'Back', projects_path %>
