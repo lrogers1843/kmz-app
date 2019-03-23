@@ -43,7 +43,7 @@ class Project < ApplicationRecord
         zf.write()
         #send to S3
         s3 = Aws::S3::Resource.new
-        obj = s3.bucket(ENV['S3_BUCKET']).object("uploads/kmz_directory" + "#{self.id}.kmz")
+        obj = s3.bucket(ENV['S3_BUCKET']).object("uploads/kmz_directory/" + "#{self.id}.kmz")
         obj.upload_file("/tmp/kmz_directory/#{self.id}.kmz")
     end
     
