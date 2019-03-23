@@ -13,10 +13,7 @@ class ProjectsController < ApplicationController
     @pictures = @project.pictures.all
     @project.generate_kml
     @project.download_project
-    directory_to_zip = "/tmp/#{@project.id}"
-    output_file = "/tmp/kmz_directory/#{@project.id}.kmz"
-    zf = ZipFileGenerator.new(directory_to_zip, output_file)
-    zf.write()
+    
   end
 
   # GET /projects/new
@@ -29,9 +26,6 @@ class ProjectsController < ApplicationController
   def edit
   end
   
-  def generate_kmz
-  end
-
   # POST /projects
   # POST /projects.json
   def create

@@ -35,6 +35,18 @@ class Project < ApplicationRecord
         }
     end
     
+    def generate_kmz
+        #create
+        directory_to_zip = "/tmp/#{self.id}"
+        output_file = "/tmp/kmz_directory/#{self.id}.kmz"
+        zf = ZipFileGenerator.new(directory_to_zip, output_file)
+        zf.write()
+        #send to S3
+        s3 = Aws::S3::Resource.new
+        obj = s3.bucket(ENV['S3_BUCKET']).object("uploads/kmz_directory" + "#{self.id}.kmz")
+        obj.upload_file("/tmp/kmz_directory/#{self.id}.kmz")
+    end
+    
     def download_project
         #tmp cleanup    
         #FileUtils.rm_r '/tmp'
