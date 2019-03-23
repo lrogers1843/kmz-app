@@ -14,7 +14,7 @@ class ProjectsController < ApplicationController
     @project.generate_kml
     @project.download_project
     directory_to_zip = "/tmp/#{@project.id}"
-    output_file = "/tmp/#{@project.id}.kmz"
+    output_file = "/tmp/kmz_directory/#{@project.id}.kmz"
     zf = ZipFileGenerator.new(directory_to_zip, output_file)
     zf.write()
   end

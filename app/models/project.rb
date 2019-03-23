@@ -24,9 +24,9 @@ class Project < ApplicationRecord
             content.push('</Point>')
             content.push('</Placemark>')
         end
-        #pushes upload to S3 folder
         content.push('</Document>')
         content.push('</kml>')
+        #pushes upload to S3 folder
         s3 = Aws::S3::Resource.new
         obj = s3.bucket(ENV['S3_BUCKET']).object("uploads/" + "#{self.id}" + "/doc.kml")
         File.open("kml_temp", "w+") { |f| 
@@ -42,6 +42,12 @@ class Project < ApplicationRecord
         #delete target directory if exists
         if Dir.exist?("/tmp/#{self.id}") 
             FileUtils.remove_dir("/tmp/#{self.id}")
+        end
+        
+        #create kmz_dir if needed
+        if Dir.exist?("/tmp/kmz_directory") 
+        else
+           FileUtils.mkdir "/tmp/kmz_directory"  
         end
         
         #create target dir
