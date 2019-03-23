@@ -13,7 +13,7 @@ class ProjectsController < ApplicationController
     @pictures = @project.pictures.all
     @project.generate_kml
     @project.download_project
-    
+    @project.generate_kmz
   end
 
   # GET /projects/new
