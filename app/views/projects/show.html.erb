@@ -10,12 +10,12 @@
     <div style="display: inline-block; margin-right: 25px; border: 2px solid black; padding:10px">
 	   <%= image_tag picture.image.url, size:200 %>
 	   <p>Latitude:  <%= picture.lat %> </p>
-	   <p>Longitude: <%= picture.long %> </p> 
+	   <p>Longitude: -<%= picture.long %> </p> 
     </div>
     <% end %>
 </div>
 
 <%= link_to 'Edit', edit_project_path(@project) %> 
-<a href= <%= Rails.root.join('tmp', "#{@project.id}" , "doc.kml") %> download>Download KML</a>
-<a href= <%= Rails.root.join('tmp', "#{@project.id}.kmz") %> download>Download KMZ</a>
+<a href= <%= "/tmp/#{@project.id}/doc.kml" %> download>Download KML</a>
+<a href= <%= "/kmz_directory/#{@project.id}.kmz" %> download>Download KMZ</a>
 <%= link_to 'Back', projects_path %>

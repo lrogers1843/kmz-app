@@ -11,11 +11,10 @@ class ProjectsController < ApplicationController
   # GET /projects/1.json
   def show
     @pictures = @project.pictures.all
+    @project.generate_kml
+    @project.download_project
     @project.generate_kmz
-    directory_to_zip = Rails.root.join('var/tmp', "#{@project.id}")
-    output_file = Rails.root.join('var/tmp', "#{@project.id}.kmz")
-    zf = ZipFileGenerator.new(directory_to_zip, output_file)
-    zf.write
+
   end
 
   # GET /projects/new
@@ -29,9 +28,6 @@ class ProjectsController < ApplicationController
   def edit
   end
   
-  def generate_kmz
-  end
-
   # POST /projects
   # POST /projects.json
   def create
