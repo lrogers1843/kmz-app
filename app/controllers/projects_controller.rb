@@ -10,11 +10,10 @@ class ProjectsController < ApplicationController
   # GET /projects/1
   # GET /projects/1.json
   def show
-    @pictures = @project.pictures.all
-    @project.generate_kml
-    @project.download_project
-    @project.generate_kmz
-
+   @pictures = @project.pictures.all
+   @project.generate_kml
+   @project.download_project
+   @project.generate_kmz
   end
 
   # GET /projects/new
