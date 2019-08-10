@@ -11,9 +11,7 @@ class ProjectsController < ApplicationController
   # GET /projects/1.json
   def show
    @pictures = @project.pictures.all
-   @project.generate_kml
-   @project.download_project
-   @project.generate_kmz
+  
   end
 
   # GET /projects/new
@@ -37,6 +35,7 @@ class ProjectsController < ApplicationController
         params[:pictures]['image'].each do |a|
           @picture = @project.pictures.create!(:image => a, :project_id => @project.id)
        end
+        GenerateKmzJob.perform_later(@project.id)
         format.html { redirect_to @project, notice: 'Project was successfully created.' }
         format.json { render :show, status: :created, location: @project }
       else
