@@ -1,4 +1,7 @@
 Rails.application.configure do
+  #for c9 testing
+  config.web_console.whitelisted_ips = '174.194.1.159'
+  
   # Settings specified here will take precedence over those in config/application.rb.
 
   # The test environment is used exclusively to run your application's
