@@ -6,5 +6,6 @@ class GenerateKmzJob < ApplicationJob
     project.generate_kml
     project.download_project
     project.generate_kmz
+    project.cleanup
   end
 end

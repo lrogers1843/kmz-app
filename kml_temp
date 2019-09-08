@@ -1,38 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2" xmlns:kml="http://www.opengis.net/kml/2.2" xmlns:atom="http://www.w3.org/2005/Atom">
 <Document>
-<name>22.kmz</name>
+<name>11.kmz</name>
 <Placemark>
-<name>IMG_20190630_175932_-_Copy.jpg</name>
+<name>IMG_3121.JPG</name>
 <description>
 <![CDATA[
-<img style="max-width:1000px;" src="IMG_20190630_175932_-_Copy.jpg">
+<img style="max-width:1000px;" src="IMG_3121.JPG">
 ]]>
 </description>
 <Point>
-<coordinates>-70.495522,30.126057</coordinates>
-</Point>
-</Placemark>
-<Placemark>
-<name>IMG_20190629_130538_-_Copy.jpg</name>
-<description>
-<![CDATA[
-<img style="max-width:1000px;" src="IMG_20190629_130538_-_Copy.jpg">
-]]>
-</description>
-<Point>
-<coordinates>-71.517414,32.238681</coordinates>
-</Point>
-</Placemark>
-<Placemark>
-<name>IMG_20190630_160751_-_Copy.jpg</name>
-<description>
-<![CDATA[
-<img style="max-width:1000px;" src="IMG_20190630_160751_-_Copy.jpg">
-]]>
-</description>
-<Point>
-<coordinates>-70.501144,30.129745</coordinates>
+<coordinates>-79.719094,34.606133</coordinates>
 </Point>
 </Placemark>
 </Document>

@@ -20,11 +20,11 @@
 <a href="<%= 
   s3 = Aws::S3::Resource.new
   obj = s3.bucket(ENV['S3_BUCKET']).object("uploads/" + "#{@project.id}/" + "doc.kml")
-  obj.presigned_url(:get, expires_in: 3600) %>" download>Download KML</a>
+  obj.presigned_url(:get, expires_in: 3600, response_content_disposition: "attachment; filename=#{@project.id}.kml") %>" download>Download KML</a>
   
 <a href="<%= 
   s3 = Aws::S3::Resource.new
   obj = s3.bucket(ENV['S3_BUCKET']).object("uploads/kmz_directory/" + "#{@project.id}.kmz")
-  obj.presigned_url(:get, expires_in: 3600) %>" download>Download KMZ</a>
+  obj.presigned_url(:get, expires_in: 3600, response_content_disposition: "attachment; filename=#{@project.id}.kmz") %>" download>Download KMZ</a>
 
 <%= link_to 'Back', projects_path %>

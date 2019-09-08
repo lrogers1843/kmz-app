@@ -37,14 +37,14 @@ class Project < ApplicationRecord
     
     def generate_kmz
         #create
-        directory_to_zip = "/tmp/#{self.id}"
-        output_file = "/tmp/kmz_directory/#{self.id}.kmz"
+        directory_to_zip = "tmp/uploads/#{self.id}"
+        output_file = "tmp/uploads/kmz_directory/#{self.id}.kmz"
         zf = ZipFileGenerator.new(directory_to_zip, output_file)
         zf.write()
         #send to S3
         s3 = Aws::S3::Resource.new
         obj = s3.bucket(ENV['S3_BUCKET']).object("uploads/kmz_directory/" + "#{self.id}.kmz")
-        obj.upload_file("/tmp/kmz_directory/#{self.id}.kmz")
+        obj.upload_file("tmp/uploads/kmz_directory/#{self.id}.kmz")
     end
     
     def download_project
@@ -52,18 +52,18 @@ class Project < ApplicationRecord
         #FileUtils.rm_r '/tmp'
         
         #delete target directory if exists
-        if Dir.exist?("/tmp/#{self.id}") 
-            FileUtils.remove_dir("/tmp/#{self.id}")
+        if Dir.exist?("tmp/uploads/#{self.id}") 
+            FileUtils.remove_dir("tmp/uploads/#{self.id}")
         end
         
         #create kmz_dir if needed
-        if Dir.exist?("/tmp/kmz_directory") 
+        if Dir.exist?("tmp/uploads/kmz_directory") 
         else
-           FileUtils.mkdir "/tmp/kmz_directory"  
+           FileUtils.mkdir_p "tmp/uploads/kmz_directory"  
         end
         
         #create target dir
-        FileUtils.mkdir "/tmp/#{self.id}" 
+        FileUtils.mkdir_p "tmp/uploads/#{self.id}" 
         
         #download pics
         s3 = Aws::S3::Resource.new
@@ -72,9 +72,13 @@ class Project < ApplicationRecord
             full_key = object.key
             file_name = full_key.to_s.split('/').last
             #save to /tmp
-            object.get(response_target: "/tmp/#{self.id}/#{file_name}")
+            object.get(response_target: "tmp/uploads/#{self.id}/#{file_name}")
         end
         
+    end
+    
+    def cleanup
+        FileUtils.rm_r Dir.glob('tmp/uploads/*')
     end
     
 end
