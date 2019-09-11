@@ -1,45 +1,6 @@
-  <head>
-<style>
-body {
-    background-color: #1A73E8;
-}
+<div class="center">
+        <h1 class="cover-heading" style="font-size: 50px; margin-top: 0px">KMZ Generator</h1>
+        <p class="lead" style="font-size: " ><i>Put Your Photos on the Map</i></p>
+      <%= link_to 'Create An Album', new_project_path, class: "btn btn-primary btn-lg" %>
+</div>
 
-h1 {
-  color: black;
-  font-family: "Google Sans", Helvetica, Arial, sans-serif;
-}
-
-p {
-    color: black;
-    font-family: "Google Sans", Helvetica, Arial, sans-serif;
-}
-
-#lukebutton {
-    color: black;
-    font-family: "Google Sans", Helvetica, Arial, sans-serif;
-    background-color: white;
-}
-</style>
-</head>
-  
-  <body class="text-center">
-
-    <div class="cover-container d-flex h-100 p-3 mx-auto flex-column">
-      <header class="masthead mb-auto">
-        <div class="inner">
-          <nav class="nav nav-masthead justify-content-center">
-            <!-- links here --> 
-          </nav>
-        </div>
-      </header>
-
-      <main role="main" class="inner cover">
-        <h1 class="cover-heading">KMZ Tool</h1>
-        <p class="lead">Upload -> Download -> Enjoy</p>
-      </main>
-      
-      <%= link_to 'New Project', new_project_path, :class => "btn btn-light btn-lg", :id => "lukebutton" %>
-      
-    </div>
-
-</body>

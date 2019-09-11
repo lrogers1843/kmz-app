@@ -30,13 +30,32 @@ p {
     color: black;
     font-family: "Google Sans", Helvetica, Arial, sans-serif;
 }
+.link {
+    font-weight: bold;
+    color: black;
+}
+
+/* visited link */
+.link:visited {
+ color: black;
+}
+
+/* mouse over link */
+.link:hover {
+  background-color: transparent;
+}
+
+/* selected link */
+.link:active {
+  color: blue;
+}
 
 label {
     color: black;
     font-family: "Google Sans", Helvetica, Arial, sans-serif;
 }
 
-#lukebutton {
+.btn {
     color: black;
     font-family: "Google Sans", Helvetica, Arial, sans-serif;
     background-color: white;
@@ -59,4 +78,15 @@ input[type="file"] {
 }
 .form-group {
     height: 50px;
+}
+img {
+  max-width: 150px;
+  height: auto;
+}
+
+.center{
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
 }
