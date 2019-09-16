@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2" xmlns:kml="http://www.opengis.net/kml/2.2" xmlns:atom="http://www.w3.org/2005/Atom">
 <Document>
-<name>19.kmz</name>
+<name>20.kmz</name>
 <Placemark>
-<name>IMG_3120.JPG</name>
+<name>IMG_20190722_202812.jpg</name>
 <description>
 <![CDATA[
-<img style="max-width:1000px;" src="IMG_3120.JPG">
+<img style="max-width:1000px;" src="IMG_20190722_202812.jpg">
 ]]>
 </description>
 <Point>
-<coordinates>-79.703781,34.609956</coordinates>
+<coordinates>-80.806811,35.236939</coordinates>
 </Point>
 </Placemark>
 </Document>

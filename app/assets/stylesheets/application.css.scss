@@ -60,6 +60,9 @@ label {
     font-family: "Google Sans", Helvetica, Arial, sans-serif;
     background-color: white;
 }
+.btn-lg {
+    color: black;
+}
 
 input[type="file"] {
     display: none;
@@ -88,5 +91,11 @@ img {
   position: absolute;
   left: 50%;
   top: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -80%);
+}
+#notice {
+    color:white;
+}
+a:visited {
+ color: black;
 }
